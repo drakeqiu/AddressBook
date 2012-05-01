@@ -6,6 +6,10 @@ import java.util.List;
 public class AddressBook {
 	private static ArrayList<AddressItem> addressList = new ArrayList<AddressItem>();
 
+	private AddressBook() {
+
+	}
+
 	public static ArrayList<AddressItem> getAddressList() {
 		return addressList;
 	}
@@ -18,7 +22,7 @@ public class AddressBook {
 		if (addressList == null) {
 			addressList = new ArrayList<AddressItem>();
 		}
-		
+
 		return addressList;
 	}
 }
