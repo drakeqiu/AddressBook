@@ -27,6 +27,9 @@ public class ClientImpl implements IClient{
 			
 			op = displayMenu();
 			
+			if("1".equals(op)){
+				addOP();
+			}
 			
 			
 			//op = prompt("Please select");
@@ -60,7 +63,7 @@ public class ClientImpl implements IClient{
 	
 	private String displayMenu() throws IOException{
 		String op = null;
-		while(op==null || "".equals(op.trim()) || !checkOption(op)){
+		while(op==null || "".equals(op.trim()) || !checkOption(op.trim())){
 			System.out.println(STARLINE);
 			System.out.println("\nMENU");
 			System.out.println("\n[1] add address");
@@ -81,6 +84,11 @@ public class ClientImpl implements IClient{
 			}
 		}
 		return false;
+	}
+	
+	private void addOP() throws IOException{
+		String address = prompt("Please enter an address");
+		//addressService.addAddress(addressBookList, null);
 	}
 	
 }
