@@ -1,4 +1,4 @@
-package com.ericsson.javatraining.addressbook.client;
+package com.ericsson.javatraining.addressbook;
 
 public interface IClient {
 	public void start();

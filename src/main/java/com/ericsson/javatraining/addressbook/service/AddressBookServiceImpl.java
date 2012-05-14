@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.ericsson.javatraining.addressbook.bo.AddressItem;
+import com.ericsson.javatraining.addressbook.AddressItem;
 import com.ericsson.javatraining.addressbook.util.StringUtil;
 
 public class AddressBookServiceImpl implements IAddressBookService {

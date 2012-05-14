@@ -3,6 +3,8 @@ package com.ericsson.javatraining.addressbook.bo;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ericsson.javatraining.addressbook.AddressItem;
+
 public class AddressBook {
 	private static ArrayList<AddressItem> addressList = new ArrayList<AddressItem>();
 

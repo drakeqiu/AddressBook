@@ -1,4 +1,4 @@
-package com.ericsson.javatraining.addressbook.client;
+package com.ericsson.javatraining.addressbook;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,7 +8,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.ericsson.javatraining.addressbook.bo.AddressBook;
-import com.ericsson.javatraining.addressbook.bo.AddressItem;
 import com.ericsson.javatraining.addressbook.service.AddressBookServiceImpl;
 import com.ericsson.javatraining.addressbook.service.IAddressBookService;
 import com.ericsson.javatraining.addressbook.util.StringUtil;
@@ -100,7 +99,7 @@ public class ClientImpl implements IClient {
 			}
 			if(StringUtil.regmatch(addressReg, rtValue)){
 				String[] itemArray= rtValue.split(" ");
-				AddressItem item = new AddressItem();
+				AddressItem item = new AddressItem(itemArray[0],itemArray[1],itemArray[2]);
 				item.setName(itemArray[0]);
 				item.setAddress(itemArray[1]);
 				item.setPhoneNum(itemArray[2]);

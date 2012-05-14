@@ -1,4 +1,4 @@
-package com.ericsson.javatraining.addressbook.bo;
+package com.ericsson.javatraining.addressbook;
 
 public class AddressItem {
 	private String name;
@@ -9,6 +9,14 @@ public class AddressItem {
 		return name;
 	}
 
+	public AddressItem(String name, String address, String phoneNum) {
+		super();
+		this.name = name;
+		this.address = address;
+		this.phoneNum = phoneNum;
+	}
+
+	
 	public void setName(String name) {
 		this.name = name;
 	}
