@@ -1,5 +1,7 @@
 package com.ericsson.javatraining.addressbook;
 
+import java.io.IOException;
+
 
 public class Server {
 
@@ -25,7 +27,12 @@ public class Server {
 
 	public void start() {
 		// while(processor);
-		Process.getInstance().process();
+		try {
+			Process.getInstance().process();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

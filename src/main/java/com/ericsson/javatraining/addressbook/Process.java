@@ -1,5 +1,6 @@
 package com.ericsson.javatraining.addressbook;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,10 +11,12 @@ import com.ericsson.javatraining.addressbook.util.StringUtil;
 public class Process {
 	private static Process instance = new Process();
 	private Map<String, AbstractAddressionAction> handleMap = new HashMap();
+	private Map<String,String> menuMap = new HashMap();
 	private ProcessionManager manager;
 
 	public static final String SEARCHACTION = "SearchAction";
 	public static final String ADDACTION = "AddAction";
+	public static final String SAVEACTION = "SaveAction";
 	public static final String QUIT = "Quit";
 
 	private List addressBook;
@@ -46,7 +49,7 @@ public class Process {
 		this.manager = manager;
 	}
 
-	public void process() {
+	public void process() throws IOException {
 		// IAction action = getRequestion();
 		System.out.println("********************************");
 		System.out.println("Welcome to address book");
@@ -64,8 +67,9 @@ public class Process {
 		}
 	}
 
-	private String processMenu() {
+	private String processMenu() throws IOException {
 		printMenu();
+		StringUtil.prompt("Please select");
 		return QUIT;
 	}
 
