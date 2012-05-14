@@ -25,12 +25,14 @@ public class Process {
 		addressBook = new ArrayList();
 		AbstractAddressionAction addAction = new AddAddressAction();
 		AbstractAddressionAction searchAction = new SearchAddressAction();
-
+		
 		searchAction.setAddressBook(addressBook);
 		addAction.setAddressBook(addressBook);
 
 		handleMap.put(SEARCHACTION, addAction);
 		handleMap.put(ADDACTION, searchAction);
+		
+		this.getClass().getClassLoader().getResource("/").getPath();
 	}
 
 	public List getAddressBook() {
