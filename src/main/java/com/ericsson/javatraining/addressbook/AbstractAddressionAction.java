@@ -4,14 +4,18 @@ import java.util.List;
 
 public abstract class AbstractAddressionAction {
 
-	protected List AddressionBook;
+	protected List addressBook;
 	
-	protected List getAddressionBook() {
-		return AddressionBook;
+	
+
+
+
+	public List getAddressBook() {
+		return addressBook;
 	}
 
-	public void setAddressionBook(List addressionBook) {
-		AddressionBook = addressionBook;
+	public void setAddressBook(List addressBook) {
+		this.addressBook = addressBook;
 	}
 
 	public AbstractAddressionAction() {

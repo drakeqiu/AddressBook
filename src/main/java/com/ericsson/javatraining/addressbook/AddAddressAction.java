@@ -29,7 +29,7 @@ public class AddAddressAction extends AbstractAddressionAction{
 	
 	private synchronized void addAddress(AddressItem item) {
 		// TODO Auto-generated method stub
-		getAddressionBook().add(item);
+		getAddressBook().add(item);
 	}
 	
 }

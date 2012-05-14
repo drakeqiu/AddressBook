@@ -28,10 +28,10 @@ public class SearchAddressAction extends AbstractAddressionAction{
 	
 	private List searchAddress(String number){
 		if("all".equals(number)){
-			return getAddressionBook();
+			return getAddressBook();
 		}
 		List<AddressItem> resultList = new ArrayList();
-		List addressBookList = getAddressionBook();
+		List addressBookList = getAddressBook();
 		Iterator it = addressBookList.iterator();
 
 		while (it.hasNext()) {
