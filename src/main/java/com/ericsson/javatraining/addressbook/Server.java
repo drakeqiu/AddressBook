@@ -6,7 +6,9 @@ import java.io.IOException;
 public class Server {
 
 	private static Server instance = new Server();
-
+	
+	public static final String ADDRESSPATH = ClassLoader.getSystemResource("AddressList").toString();
+	
 	private Process process;
 
 	public Process getProcess() {
