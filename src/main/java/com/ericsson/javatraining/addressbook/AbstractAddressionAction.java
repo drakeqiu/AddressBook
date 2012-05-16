@@ -6,9 +6,6 @@ public abstract class AbstractAddressionAction {
 
 	protected List addressBook;
 	
-	
-
-
 
 	public List getAddressBook() {
 		return addressBook;

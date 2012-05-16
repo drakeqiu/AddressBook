@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu-list>
+	<menu id = "add_menu">
+		<name>add_menu</name>
+		<content></content>
+		<handle-option>1</handle-option>
+		<handle_class></handle_class>
+	</menu>
+	
+	<menu id = "search_menu">
+		<name>search_menu</name>
+		<content></content>
+		<handle-option>2</handle-option>
+		<handle_class></handle_class>
+	</menu>
+	
+	<menu id = "save_menu">
+		<name>save_menu</name>
+		<content></content>
+		<handle-option>3</handle-option>
+		<handle_class></handle_class>
+	</menu>
+</menu-list>
