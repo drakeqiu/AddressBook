@@ -13,9 +13,6 @@ public class MainApp {
 	}
 
 	public static void main(String[] args) {
-//		ClientImpl client = new ClientImpl();
-//		client.start();
 		Server.getInstance().start();
-//		System.out.println(ClassLoader.getSystemResource("AddressList"));
 	}
 }

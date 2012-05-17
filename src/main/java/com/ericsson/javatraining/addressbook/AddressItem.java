@@ -5,6 +5,18 @@ public class AddressItem {
 
 	private String address;
 	private String phoneNum;
+	public AddressItem(String string) {
+		super();
+		String subString = string.substring(AddressItem.class.getSimpleName().length()).trim();
+		String itemArray[] = null;
+		if(subString.length()>2){
+			itemArray = subString.substring(1, subString.length()-2).split(",");
+			this.name = itemArray[0].toString().split("=")[1];
+			this.address = itemArray[1].toString().split("=")[1];
+			this.phoneNum = itemArray[2].toString().split("=")[1];
+		}
+	}
+
 	public AddressItem(String name, String address, String phoneNum) {
 		super();
 		this.name = name;

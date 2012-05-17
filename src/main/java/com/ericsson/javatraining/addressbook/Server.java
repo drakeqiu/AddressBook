@@ -7,7 +7,7 @@ public class Server {
 
 	private static Server instance = new Server();
 	
-	public static final String ADDRESSPATH = ClassLoader.getSystemResource("AddressList").toString();
+	
 	
 	private Process process;
 
@@ -28,7 +28,6 @@ public class Server {
 	}
 
 	public void start() {
-		// while(processor);
 		try {
 			Process.getInstance().process();
 		} catch (IOException e) {

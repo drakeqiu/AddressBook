@@ -34,7 +34,7 @@
 		<name>quit_menu</name>
 		<index>4</index>
 		<content>Quit</content>
-		<handle-option>4</handle-option>
+		<handle-option>q</handle-option>
 		<menu-quit>true</menu-quit>
 		<handle-class>com.ericsson.javatraining.addressbook.action.QuitAction
 		</handle-class>

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.io.Reader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -32,6 +33,10 @@ public final class StringUtil {
 
 	public static void output(String info) {
 		output(info, System.out);
+	}
+	
+	public static String input(String info, BufferedReader reader) throws IOException{
+		return reader.readLine();
 	}
 		
 }

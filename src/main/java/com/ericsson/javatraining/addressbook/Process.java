@@ -1,33 +1,61 @@
 package com.ericsson.javatraining.addressbook;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import com.ericsson.javatraining.addressbook.action.AbstractAddressAction;
-import com.ericsson.javatraining.addressbook.action.AddAddressAction;
-import com.ericsson.javatraining.addressbook.action.SearchAddressAction;
 import com.ericsson.javatraining.addressbook.util.StringUtil;
 
 public class Process {
 	private static Process instance = new Process();
-	private Map<String, AbstractAddressAction> handleMap = new HashMap();
-	private ProcessionManager manager;
 
 	private List menuList;
 
 	private List addressBook;
 
 	private void init() {
-		addressBook = new ArrayList();
+		addressBook = initiateAddressList();
 
 		menuList = MenuManager.getMenuList();
 		for (Object obj : menuList) {
 			MenuItem menu = (MenuItem) obj;
 			menu.getAction().setAddressBook(addressBook);
 		}
+	}
+
+	private List initiateAddressList(){
+		List list = new ArrayList();
+		File file = new File(ServerDef.ADDRESSSTOREPATH);
+		try {
+			if(!file.exists()){
+				file.createNewFile();
+			}
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			
+			
+			while(true){
+				String addressStr = null;
+				addressStr = reader.readLine();
+				if(addressStr == null){
+					break;
+				} else{
+					list.add(new AddressItem(addressStr));
+				}
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		return list;
 	}
 
 	public List getAddressBook() {
@@ -38,14 +66,6 @@ public class Process {
 		this.addressBook = addressBook;
 	}
 
-	public ProcessionManager getManager() {
-		return manager;
-	}
-
-	public void setManager(ProcessionManager manager) {
-		this.manager = manager;
-	}
-
 	public void process() throws IOException {
 		System.out.println("********************************");
 		System.out.println("Welcome to address book");
@@ -53,6 +73,11 @@ public class Process {
 		processMenu();
 	}
 
+	/**
+	 * process menu operation
+	 * 
+	 * @throws IOException
+	 */
 	private void processMenu() throws IOException {
 		while (true) {
 			printMenu();
@@ -69,7 +94,7 @@ public class Process {
 		MenuItem menu = null;
 		boolean isMenuQuit = false;
 		for (Object obj : menuList) {
-			MenuItem  menuItem= (MenuItem) obj;
+			MenuItem menuItem = (MenuItem) obj;
 			if (option.equals(menuItem.getHandleOption())) {
 				menu = menuItem;
 				menu.getAction().action();
@@ -79,6 +104,9 @@ public class Process {
 		return isMenuQuit;
 	}
 
+	/**
+	 * just print all menu
+	 */
 	private void printMenu() {
 		StringUtil.output("================================");
 		for (Object obj : menuList) {
@@ -86,10 +114,6 @@ public class Process {
 			StringUtil.output(menu.toString());
 		}
 		StringUtil.output("================================");
-	}
-
-	public void getRequestion() {
-
 	}
 
 	private Process() {
@@ -100,5 +124,10 @@ public class Process {
 
 	public static Process getInstance() {
 		return instance;
+	}
+
+	public static void main(String args[]) {
+		Process process = Process.getInstance();
+		process.getAddressBook();
 	}
 }

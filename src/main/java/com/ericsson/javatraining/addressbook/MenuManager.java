@@ -14,34 +14,28 @@ import com.ericsson.javatraining.addressbook.util.DomUtil;
 
 public class MenuManager {
 
-	private static final String CONFIGPATH = ClassLoader.getSystemResource(
-			"menu_action.xml").getPath();
-	private static final String MENUHANDLEOPTION = "handle-option";
-	private static final String MENUCONTENT = "content";
-	private static final String MENUNAME = "name";
-	private static final String MENUHANDLECLASS = "handle-class";
-	private static final String MENUQUIT = "menu-quit";
-	private static final String MENUINDEX = "index";
+	
 
 	private MenuManager() {
 		super();
 	}
 
+	// load menu settings from config file
 	private static List loadConfig() {
 		List list = new ArrayList();
-		List elementList = DomUtil.load(CONFIGPATH).getRootElement().elements();
+		List elementList = DomUtil.load(ServerDef.CONFIGPATH).getRootElement().elements();
 		for (Object obj : elementList) {
 			Element element = (Element) obj;
 			MenuItem menu = new MenuItem();
-			menu.setName(element.elementTextTrim(MENUNAME));
-			menu.setIndex(Integer.parseInt(element.elementTextTrim(MENUINDEX)));
-			menu.setHandleOption(element.elementTextTrim(MENUHANDLEOPTION));
-			menu.setContent(element.elementTextTrim(MENUCONTENT));
+			menu.setName(element.elementTextTrim(ServerDef.MENUNAME));
+			menu.setIndex(Integer.parseInt(element.elementTextTrim(ServerDef.MENUINDEX)));
+			menu.setHandleOption(element.elementTextTrim(ServerDef.MENUHANDLEOPTION));
+			menu.setContent(element.elementTextTrim(ServerDef.MENUCONTENT));
 			menu.setMenuQuit(Boolean.parseBoolean(element
-					.elementTextTrim(MENUQUIT)));
+					.elementTextTrim(ServerDef.MENUQUIT)));
 			try {
 				menu.setAction((AbstractAddressAction) Class.forName(
-						element.elementTextTrim(MENUHANDLECLASS)).newInstance());
+						element.elementTextTrim(ServerDef.MENUHANDLECLASS)).newInstance());
 			} catch (InstantiationException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
