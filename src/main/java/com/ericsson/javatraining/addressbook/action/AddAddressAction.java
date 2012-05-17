@@ -1,8 +1,9 @@
-package com.ericsson.javatraining.addressbook;
+package com.ericsson.javatraining.addressbook.action;
 
 import java.io.IOException;
 import java.util.List;
 
+import com.ericsson.javatraining.addressbook.AddressItem;
 import com.ericsson.javatraining.addressbook.util.StringUtil;
 
 public class AddAddressAction extends AbstractAddressionAction{
@@ -13,6 +14,7 @@ public class AddAddressAction extends AbstractAddressionAction{
 		try {
 			AddressItem item = getItemFromConsole();
 			addAddress(item);
+			StringUtil.output("Successfully");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -1,4 +1,4 @@
-package com.ericsson.javatraining.addressbook;
+package com.ericsson.javatraining.addressbook.action;
 
 import java.util.List;
 

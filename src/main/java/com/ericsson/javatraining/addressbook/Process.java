@@ -6,33 +6,28 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.ericsson.javatraining.addressbook.action.AbstractAddressionAction;
+import com.ericsson.javatraining.addressbook.action.AddAddressAction;
+import com.ericsson.javatraining.addressbook.action.SearchAddressAction;
 import com.ericsson.javatraining.addressbook.util.StringUtil;
 
 public class Process {
 	private static Process instance = new Process();
 	private Map<String, AbstractAddressionAction> handleMap = new HashMap();
-	private Map<String,String> menuMap = new HashMap();
 	private ProcessionManager manager;
 
-	public static final String SEARCHACTION = "SearchAction";
-	public static final String ADDACTION = "AddAction";
-	public static final String SAVEACTION = "SaveAction";
-	public static final String QUIT = "Quit";
+	private List menuList;
 
 	private List addressBook;
 
 	private void init() {
 		addressBook = new ArrayList();
-		AbstractAddressionAction addAction = new AddAddressAction();
-		AbstractAddressionAction searchAction = new SearchAddressAction();
-		
-		searchAction.setAddressBook(addressBook);
-		addAction.setAddressBook(addressBook);
 
-		handleMap.put(SEARCHACTION, addAction);
-		handleMap.put(ADDACTION, searchAction);
-		
-		this.getClass().getClassLoader().getResource("/").getPath();
+		menuList = MenuManager.getMenuList();
+		for (Object obj : menuList) {
+			MenuItem menu = (MenuItem) obj;
+			menu.getAction().setAddressBook(addressBook);
+		}
 	}
 
 	public List getAddressBook() {
@@ -52,36 +47,47 @@ public class Process {
 	}
 
 	public void process() throws IOException {
-		// IAction action = getRequestion();
 		System.out.println("********************************");
 		System.out.println("Welcome to address book");
 		System.out.println("********************************");
+		processMenu();
+	}
+
+	private void processMenu() throws IOException {
 		while (true) {
-			String menuValue = processMenu();
-			if (QUIT.equals(menuValue)) {
+			printMenu();
+			String option = StringUtil.prompt("Please select");
+			if (processOption(option)) {
 				return;
-			} else {
-				ProcessHandlerFactory.getInstance(
-						(AbstractAddressionAction) handleMap.get(menuValue))
-						.run();
 			}
 
 		}
+
 	}
 
-	private String processMenu() throws IOException {
-		printMenu();
-		StringUtil.prompt("Please select");
-		return QUIT;
+	private boolean processOption(String option) {
+		MenuItem menu = null;
+		boolean isMenuQuit = false;
+		for (Object obj : menuList) {
+			MenuItem  menuItem= (MenuItem) obj;
+			if (option.equals(menuItem.getHandleOption())) {
+				menu = menuItem;
+				menu.getAction().action();
+				isMenuQuit = menu.isMenuQuit();
+			}
+		}
+		return isMenuQuit;
 	}
 
-	private void printMenu(){
-		StringUtil.output("[1] Add an address Item");
-		StringUtil.output("[2] Search an address Item");
-		StringUtil.output("[3] Save all");
-		StringUtil.output("[q] Quit");
+	private void printMenu() {
+		StringUtil.output("================================");
+		for (Object obj : menuList) {
+			MenuItem menu = (MenuItem) obj;
+			StringUtil.output(menu.toString());
+		}
+		StringUtil.output("================================");
 	}
-	
+
 	public void getRequestion() {
 
 	}

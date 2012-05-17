@@ -1,5 +1,7 @@
 package com.ericsson.javatraining.addressbook;
 
+import com.ericsson.javatraining.addressbook.action.AbstractAddressionAction;
+
 
 /**
  * class for generate ProcessHandler

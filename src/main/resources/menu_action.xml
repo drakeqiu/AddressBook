@@ -1,23 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <menu-list>
-	<menu id = "add_menu">
+	<menu id="add_menu">
 		<name>add_menu</name>
-		<content></content>
+		<index>1</index>
+		<content>Add an address Item</content>
 		<handle-option>1</handle-option>
-		<handle_class></handle_class>
+		<menu-quit>false</menu-quit>
+		<handle-class>com.ericsson.javatraining.addressbook.action.AddAddressAction
+		</handle-class>
 	</menu>
-	
-	<menu id = "search_menu">
+
+	<menu id="search_menu">
 		<name>search_menu</name>
-		<content></content>
+		<index>2</index>
+		<content>Search an address Item</content>
 		<handle-option>2</handle-option>
-		<handle_class></handle_class>
+		<menu-quit>false</menu-quit>
+		<handle-class>com.ericsson.javatraining.addressbook.action.SearchAddressAction
+		</handle-class>
+	</menu>
+
+	<menu id="save_menu">
+		<name>save_menu</name>
+		<index>3</index>
+		<content>Save all</content>
+		<handle-option>3</handle-option>
+		<menu-quit>false</menu-quit>
+		<handle-class>com.ericsson.javatraining.addressbook.action.SaveAddressBookAction
+		</handle-class>
 	</menu>
 	
-	<menu id = "save_menu">
-		<name>save_menu</name>
-		<content></content>
-		<handle-option>3</handle-option>
-		<handle_class></handle_class>
+	<menu id="quit_menu">
+		<name>quit_menu</name>
+		<index>4</index>
+		<content>Quit</content>
+		<handle-option>4</handle-option>
+		<menu-quit>true</menu-quit>
+		<handle-class>com.ericsson.javatraining.addressbook.action.QuitAction
+		</handle-class>
 	</menu>
 </menu-list>

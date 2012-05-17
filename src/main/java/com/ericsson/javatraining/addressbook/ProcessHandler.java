@@ -1,5 +1,7 @@
 package com.ericsson.javatraining.addressbook;
 
+import com.ericsson.javatraining.addressbook.action.AbstractAddressionAction;
+
 public class ProcessHandler {
 	public ProcessHandler(AbstractAddressionAction concretAction) {
 		super();

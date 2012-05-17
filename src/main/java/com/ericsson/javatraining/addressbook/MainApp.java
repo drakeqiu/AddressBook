@@ -16,6 +16,6 @@ public class MainApp {
 //		ClientImpl client = new ClientImpl();
 //		client.start();
 		Server.getInstance().start();
-		System.out.println(ClassLoader.getSystemResource("AddressList"));
+//		System.out.println(ClassLoader.getSystemResource("AddressList"));
 	}
 }

@@ -1,70 +1,93 @@
 package com.ericsson.javatraining.addressbook;
 
-public class MenuItem implements Comparable<MenuItem>{
-	
-	private String id;
-	
+import com.ericsson.javatraining.addressbook.action.AbstractAddressionAction;
+
+public class MenuItem implements Comparable<MenuItem> {
+
+	private String name;
+
 	private String content;
-	
-	private int handleOption;
-	
+
+	private int index;
+
+	private String handleOption;
+
 	private AbstractAddressionAction action;
-	
+
+	private boolean menuQuit;
+
 	public MenuItem() {
 		super();
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
+	public MenuItem(String name, String content, int index,
+			String handleOption, AbstractAddressionAction action,
+			boolean menuQuit) {
+		super();
+		this.name = name;
 		this.content = content;
-	}
-
-	public int getHandleOption() {
-		return handleOption;
-	}
-
-	public void setHandleOption(int handleOption) {
+		this.index = index;
 		this.handleOption = handleOption;
+		this.action = action;
+		this.menuQuit = menuQuit;
+	}
+
+	@Override
+	public int compareTo(MenuItem o) {
+		return Integer.valueOf(this.getIndex()).compareTo(o.getIndex());
 	}
 
 	public AbstractAddressionAction getAction() {
 		return action;
 	}
 
+	public String getContent() {
+		return content;
+	}
+
+	public String getHandleOption() {
+		return handleOption;
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public boolean isMenuQuit() {
+		return menuQuit;
+	}
+
 	public void setAction(AbstractAddressionAction action) {
 		this.action = action;
 	}
 
-	public MenuItem(String id, String content, int handleOption,
-			AbstractAddressionAction action) {
-		super();
-		this.id = id;
+	public void setContent(String content) {
 		this.content = content;
-		this.handleOption = handleOption;
-		this.action = action;
 	}
 
+	public void setHandleOption(String handleOption) {
+		this.handleOption = handleOption;
+	}
 
-	@Override
-	public int compareTo(MenuItem o) {
-		return Integer.valueOf(this.getHandleOption()).compareTo(o.getHandleOption());
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
+	public void setMenuQuit(boolean menuQuit) {
+		this.menuQuit = menuQuit;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override
 	public String toString() {
-		return "[" + handleOption + "] " + content ; 
+		return "[" + handleOption + "] " + content;
 	}
-	
-	
+
 }

@@ -1,10 +1,11 @@
-package com.ericsson.javatraining.addressbook;
+package com.ericsson.javatraining.addressbook.action;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.ericsson.javatraining.addressbook.AddressItem;
 import com.ericsson.javatraining.addressbook.util.StringUtil;
 
 public class SearchAddressAction extends AbstractAddressionAction{
@@ -49,11 +50,7 @@ public class SearchAddressAction extends AbstractAddressionAction{
 		Iterator it = addressBook.iterator();
 		while(it.hasNext()){
 			AddressItem item = (AddressItem) it.next();
-			StringUtil.output("Name is " + item.getPhoneNum());
-			StringUtil.output("address is " + item.getAddress());
-			StringUtil.output("Telephone is " + item.getPhoneNum());
-			
-			StringUtil.output("===================================");
+			StringUtil.output(item.toString());
 		}
 	}
 
