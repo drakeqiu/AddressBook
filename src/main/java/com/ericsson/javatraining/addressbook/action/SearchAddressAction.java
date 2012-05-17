@@ -8,7 +8,7 @@ import java.util.List;
 import com.ericsson.javatraining.addressbook.AddressItem;
 import com.ericsson.javatraining.addressbook.util.StringUtil;
 
-public class SearchAddressAction extends AbstractAddressionAction{
+public class SearchAddressAction extends AbstractAddressAction{
 
 	@Override
 	public void action() {

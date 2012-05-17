@@ -9,7 +9,7 @@ import java.util.List;
 
 import com.ericsson.javatraining.addressbook.Server;
 
-public class SaveAddressBookAction extends AbstractAddressionAction{
+public class SaveAddressBookAction extends AbstractAddressAction{
 
 	@Override
 	public void action() {

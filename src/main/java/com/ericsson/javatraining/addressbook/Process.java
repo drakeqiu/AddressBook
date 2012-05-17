@@ -6,14 +6,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.ericsson.javatraining.addressbook.action.AbstractAddressionAction;
+import com.ericsson.javatraining.addressbook.action.AbstractAddressAction;
 import com.ericsson.javatraining.addressbook.action.AddAddressAction;
 import com.ericsson.javatraining.addressbook.action.SearchAddressAction;
 import com.ericsson.javatraining.addressbook.util.StringUtil;
 
 public class Process {
 	private static Process instance = new Process();
-	private Map<String, AbstractAddressionAction> handleMap = new HashMap();
+	private Map<String, AbstractAddressAction> handleMap = new HashMap();
 	private ProcessionManager manager;
 
 	private List menuList;

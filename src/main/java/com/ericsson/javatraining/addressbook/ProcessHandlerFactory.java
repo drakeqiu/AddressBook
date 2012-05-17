@@ -1,6 +1,6 @@
 package com.ericsson.javatraining.addressbook;
 
-import com.ericsson.javatraining.addressbook.action.AbstractAddressionAction;
+import com.ericsson.javatraining.addressbook.action.AbstractAddressAction;
 
 
 /**
@@ -14,7 +14,7 @@ public class ProcessHandlerFactory {
 		super();
 	}
 	
-	public static ProcessHandler getInstance(AbstractAddressionAction concretAction){
+	public static ProcessHandler getInstance(AbstractAddressAction concretAction){
 		return new ProcessHandler(concretAction);
 	}
 

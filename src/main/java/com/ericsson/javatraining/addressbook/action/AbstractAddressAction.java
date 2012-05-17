@@ -2,7 +2,7 @@ package com.ericsson.javatraining.addressbook.action;
 
 import java.util.List;
 
-public abstract class AbstractAddressionAction {
+public abstract class AbstractAddressAction {
 
 	protected List addressBook;
 	
@@ -15,7 +15,7 @@ public abstract class AbstractAddressionAction {
 		this.addressBook = addressBook;
 	}
 
-	public AbstractAddressionAction() {
+	public AbstractAddressAction() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

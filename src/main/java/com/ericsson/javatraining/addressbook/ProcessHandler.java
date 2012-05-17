@@ -1,20 +1,20 @@
 package com.ericsson.javatraining.addressbook;
 
-import com.ericsson.javatraining.addressbook.action.AbstractAddressionAction;
+import com.ericsson.javatraining.addressbook.action.AbstractAddressAction;
 
 public class ProcessHandler {
-	public ProcessHandler(AbstractAddressionAction concretAction) {
+	public ProcessHandler(AbstractAddressAction concretAction) {
 		super();
 		this.concretAction = concretAction;
 	}
 
-	private AbstractAddressionAction concretAction;
+	private AbstractAddressAction concretAction;
 
-	public AbstractAddressionAction getConcretAction() {
+	public AbstractAddressAction getConcretAction() {
 		return concretAction;
 	}
 
-	public void setConcretAction(AbstractAddressionAction concretAction) {
+	public void setConcretAction(AbstractAddressAction concretAction) {
 		this.concretAction = concretAction;
 	}
 	

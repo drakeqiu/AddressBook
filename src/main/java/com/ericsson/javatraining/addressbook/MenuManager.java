@@ -9,7 +9,7 @@ import java.util.List;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
-import com.ericsson.javatraining.addressbook.action.AbstractAddressionAction;
+import com.ericsson.javatraining.addressbook.action.AbstractAddressAction;
 import com.ericsson.javatraining.addressbook.util.DomUtil;
 
 public class MenuManager {
@@ -40,7 +40,7 @@ public class MenuManager {
 			menu.setMenuQuit(Boolean.parseBoolean(element
 					.elementTextTrim(MENUQUIT)));
 			try {
-				menu.setAction((AbstractAddressionAction) Class.forName(
+				menu.setAction((AbstractAddressAction) Class.forName(
 						element.elementTextTrim(MENUHANDLECLASS)).newInstance());
 			} catch (InstantiationException e) {
 				// TODO Auto-generated catch block

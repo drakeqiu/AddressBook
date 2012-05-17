@@ -1,6 +1,6 @@
 package com.ericsson.javatraining.addressbook;
 
-import com.ericsson.javatraining.addressbook.action.AbstractAddressionAction;
+import com.ericsson.javatraining.addressbook.action.AbstractAddressAction;
 
 public class MenuItem implements Comparable<MenuItem> {
 
@@ -12,7 +12,7 @@ public class MenuItem implements Comparable<MenuItem> {
 
 	private String handleOption;
 
-	private AbstractAddressionAction action;
+	private AbstractAddressAction action;
 
 	private boolean menuQuit;
 
@@ -21,7 +21,7 @@ public class MenuItem implements Comparable<MenuItem> {
 	}
 
 	public MenuItem(String name, String content, int index,
-			String handleOption, AbstractAddressionAction action,
+			String handleOption, AbstractAddressAction action,
 			boolean menuQuit) {
 		super();
 		this.name = name;
@@ -37,7 +37,7 @@ public class MenuItem implements Comparable<MenuItem> {
 		return Integer.valueOf(this.getIndex()).compareTo(o.getIndex());
 	}
 
-	public AbstractAddressionAction getAction() {
+	public AbstractAddressAction getAction() {
 		return action;
 	}
 
@@ -61,7 +61,7 @@ public class MenuItem implements Comparable<MenuItem> {
 		return menuQuit;
 	}
 
-	public void setAction(AbstractAddressionAction action) {
+	public void setAction(AbstractAddressAction action) {
 		this.action = action;
 	}
 

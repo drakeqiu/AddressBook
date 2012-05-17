@@ -6,7 +6,7 @@ import java.util.List;
 import com.ericsson.javatraining.addressbook.AddressItem;
 import com.ericsson.javatraining.addressbook.util.StringUtil;
 
-public class AddAddressAction extends AbstractAddressionAction{
+public class AddAddressAction extends AbstractAddressAction{
 
 	@Override
 	public void action() {
