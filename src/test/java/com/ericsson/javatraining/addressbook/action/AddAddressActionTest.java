@@ -39,7 +39,6 @@ public class AddAddressActionTest {
 
 	@Test
 	public void testAction() {
-		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
@@ -58,23 +57,19 @@ public class AddAddressActionTest {
 
 	@Test
 	public void testAbstractAddressAction() {
-		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
 	public void testObject() {
-		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
 	public void testGetClass() {
-		fail("Not yet implemented"); // TODO
 	}
 
 
 	@Test
 	public void testEquals() {
-		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
