@@ -81,7 +81,7 @@ public class AddAddressActionTest {
 		assertEquals(item.getPhoneNum(), "119");
 	}
 
-	@Test
+	@Test(expected=IOException.class)
 	public void testAbstractAddressActionWithIOException() throws Exception {
 		PowerMockito.mockStatic(StringUtil.class);
 		PowerMockito.doThrow(new IOException()).when(StringUtil.class,
