@@ -9,6 +9,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<powermock.version>1.4.9</powermock.version>
 		<dom4j.version>1.6.1</dom4j.version>
+		<easymock.version>3.1</easymock.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -29,6 +30,17 @@
 			<version>${powermock.version}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-easymock</artifactId>
+			<version>${powermock.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+            <groupId>org.easymock</groupId>
+            <artifactId>easymock</artifactId>
+            <version>${easymock.version}</version>
+        </dependency>
 		<dependency>
 			<groupId>dom4j</groupId>
 			<artifactId>dom4j</artifactId>
