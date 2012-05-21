@@ -20,5 +20,5 @@ public abstract class AbstractAddressAction {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public abstract void action();
+	public abstract void action () throws Exception;
 }

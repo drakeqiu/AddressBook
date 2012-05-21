@@ -66,7 +66,7 @@ public class Process {
 		this.addressBook = addressBook;
 	}
 
-	public void process() throws IOException {
+	public void process() throws Exception {
 		System.out.println("********************************");
 		System.out.println("Welcome to address book");
 		System.out.println("********************************");
@@ -75,10 +75,9 @@ public class Process {
 
 	/**
 	 * process menu operation
-	 * 
-	 * @throws IOException
+	 * @throws Exception 
 	 */
-	private void processMenu() throws IOException {
+	private void processMenu() throws Exception {
 		while (true) {
 			printMenu();
 			String option = StringUtil.prompt("Please select");
@@ -90,7 +89,7 @@ public class Process {
 
 	}
 
-	private boolean processOption(String option) {
+	private boolean processOption(String option) throws Exception {
 		MenuItem menu = null;
 		boolean isMenuQuit = false;
 		for (Object obj : menuList) {

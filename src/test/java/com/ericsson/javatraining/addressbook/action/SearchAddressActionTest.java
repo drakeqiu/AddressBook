@@ -1,8 +1,5 @@
 package com.ericsson.javatraining.addressbook.action;
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,8 +18,7 @@ import com.ericsson.javatraining.addressbook.util.StringUtil;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ StringUtil.class })
-public class AddAddressActionTest {
-
+public class SearchAddressActionTest {
 	private AbstractAddressAction action;
 
 	@BeforeClass
@@ -35,8 +31,13 @@ public class AddAddressActionTest {
 
 	@Before
 	public void setUp() throws Exception {
-		action = new AddAddressAction();
+		action = new SearchAddressAction();
 		List addressBook = new ArrayList();
+		AddressItem addressForJames = new AddressItem("James", "Shanghai",
+				"110");
+		AddressItem addressForDavid = new AddressItem("David", "Beijing", "999");
+		addressBook.add(addressForDavid);
+		addressBook.add(addressForJames);
 		action.setAddressBook(addressBook);
 	}
 
@@ -45,28 +46,10 @@ public class AddAddressActionTest {
 	}
 
 	@Test
-	public void testAction() {
-	}
-
-	@Test
-	public void testGetAddressBook() {
-		List list = new ArrayList();
-		action.setAddressBook(list);
-		assertEquals(list, action.getAddressBook());
-	}
-
-	@Test
-	public void testSetAddressBook() {
-		List list = new ArrayList();
-		action.setAddressBook(list);
-		assertEquals(list, action.getAddressBook());
-	}
-
-	@Test
-	public void testAbstractAddressAction() throws Exception {
+	public void testAction() throws Exception {
 		PowerMockito.mockStatic(StringUtil.class);
 		PowerMockito.doReturn("James").when(StringUtil.class, "prompt",
-				"Please Enter name for address book");
+				"Please enter a phoneNum for search");
 		PowerMockito.doReturn("Shanghai").when(StringUtil.class, "prompt",
 				"Please enter address for address book");
 		PowerMockito.doReturn("119").when(StringUtil.class, "prompt",
@@ -75,19 +58,6 @@ public class AddAddressActionTest {
 				"Successfully");
 
 		action.action();
-		AddressItem item = (AddressItem) action.getAddressBook().get(0);
-		assertEquals(item.getName(), "James");
-		assertEquals(item.getAddress(), "Shanghai");
-		assertEquals(item.getPhoneNum(), "119");
-	}
-
-	@Test
-	public void testAbstractAddressActionWithIOException() throws Exception {
-		PowerMockito.mockStatic(StringUtil.class);
-		PowerMockito.doThrow(new IOException()).when(StringUtil.class,
-				"prompt", "Please Enter name for address book");
-		action.action();
-
 	}
 
 }

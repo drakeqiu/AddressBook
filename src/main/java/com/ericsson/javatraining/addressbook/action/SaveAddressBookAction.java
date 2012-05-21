@@ -14,7 +14,7 @@ import com.ericsson.javatraining.addressbook.util.StringUtil;
 public class SaveAddressBookAction extends AbstractAddressAction {
 
 	@Override
-	public void action() {
+	public void action() throws Exception{
 		// TODO Auto-generated method stub
 		List list = getAddressBook();
 

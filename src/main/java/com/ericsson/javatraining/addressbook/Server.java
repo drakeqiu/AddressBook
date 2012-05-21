@@ -30,7 +30,7 @@ public class Server {
 	public void start() {
 		try {
 			Process.getInstance().process();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

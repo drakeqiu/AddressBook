@@ -11,7 +11,7 @@ import com.ericsson.javatraining.addressbook.util.StringUtil;
 public class SearchAddressAction extends AbstractAddressAction{
 
 	@Override
-	public void action() {
+	public void action() throws Exception{
 		// TODO Auto-generated method stub
 		try {
 			String phoneNum = getNumFromConsole();

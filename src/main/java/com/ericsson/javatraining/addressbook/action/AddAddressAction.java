@@ -9,7 +9,7 @@ import com.ericsson.javatraining.addressbook.util.StringUtil;
 public class AddAddressAction extends AbstractAddressAction{
 
 	@Override
-	public void action() {
+	public void action() throws Exception {
 		// TODO Auto-generated method stub
 		try {
 			AddressItem item = getItemFromConsole();
@@ -17,7 +17,9 @@ public class AddAddressAction extends AbstractAddressAction{
 			StringUtil.output("Successfully");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println("IO exception");
+			throw e;
 		}
 	}
 	
