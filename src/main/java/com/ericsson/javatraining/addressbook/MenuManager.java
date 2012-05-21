@@ -14,8 +14,6 @@ import com.ericsson.javatraining.addressbook.util.DomUtil;
 
 public class MenuManager {
 
-	
-
 	private MenuManager() {
 		super();
 	}

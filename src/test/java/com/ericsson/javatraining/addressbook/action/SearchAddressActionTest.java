@@ -1,5 +1,9 @@
 package com.ericsson.javatraining.addressbook.action;
 
+import static org.junit.Assert.assertEquals;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,14 +52,52 @@ public class SearchAddressActionTest {
 	@Test
 	public void testAction() throws Exception {
 		PowerMockito.mockStatic(StringUtil.class);
+		PowerMockito.doReturn("110").when(StringUtil.class, "prompt",
+				"Please enter a phoneNum for search");
+		PowerMockito.doReturn(true).when(StringUtil.class,"regmatch","\\d+","110");
+		action.action();
+	}
+
+	@Test
+	public void testActionWithAll() throws Exception {
+		PowerMockito.mockStatic(StringUtil.class);
+		PowerMockito.doReturn("all").when(StringUtil.class, "prompt",
+				"Please enter a phoneNum for search");
+
+		action.action();
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testActionWithInvalidArguments() throws Exception {
+		PowerMockito.mockStatic(StringUtil.class);
 		PowerMockito.doReturn("James").when(StringUtil.class, "prompt",
 				"Please enter a phoneNum for search");
-		PowerMockito.doReturn("Shanghai").when(StringUtil.class, "prompt",
-				"Please enter address for address book");
-		PowerMockito.doReturn("119").when(StringUtil.class, "prompt",
-				"Please Enter phoneNum for book");
-		PowerMockito.doNothing().when(StringUtil.class, "output",
-				"Successfully");
+		PowerMockito.doReturn(false).when(StringUtil.class,"regmatch","\\d+","James");
+
+		action.action();
+	}
+
+	@Test
+	public void testSearchAddress() throws Exception {
+		Class[] parameterTypes = new Class[1];
+		parameterTypes[0] = String.class;
+		List list = null;
+		Method method = action.getClass().getDeclaredMethod("searchAddress",
+				String.class);
+		Object[] args = new Object[1];
+		method.setAccessible(true);
+		list = (List) method.invoke(action, new Object[] { new String("110") });
+		method.setAccessible(false);
+		assertEquals("James", ((AddressItem) list.get(0)).getName());
+	}
+	
+	@Test(expected=IOException.class)
+	public void testActionWithThrowIOException() throws Exception {
+		PowerMockito.mockStatic(StringUtil.class);
+		PowerMockito.doReturn("110").when(StringUtil.class, "prompt",
+				"Please enter a phoneNum for search");
+		PowerMockito.doThrow(new IOException()).when(StringUtil.class, "prompt",
+				"Please enter a phoneNum for search");
 
 		action.action();
 	}

@@ -29,13 +29,9 @@ public class QuitActionTest {
 	}
 
 	@Test
-	public void testAction() {
-		try {
-			action.action();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void testAction() throws Exception{
+		action.action();
+		
 	}
 
 }

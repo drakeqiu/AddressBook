@@ -10,11 +10,15 @@ public class AddressItem {
 		String subString = string.substring(AddressItem.class.getSimpleName().length()).trim();
 		String itemArray[] = null;
 		if(subString.length()>2){
-			itemArray = subString.substring(1, subString.length()-2).split(",");
+			itemArray = subString.substring(1, subString.length()-1).split(",");
 			this.name = itemArray[0].toString().split("=")[1];
 			this.address = itemArray[1].toString().split("=")[1];
 			this.phoneNum = itemArray[2].toString().split("=")[1];
 		}
+	}
+	
+	public AddressItem() {
+		super();
 	}
 
 	public AddressItem(String name, String address, String phoneNum) {

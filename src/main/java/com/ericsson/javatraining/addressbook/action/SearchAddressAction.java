@@ -19,15 +19,21 @@ public class SearchAddressAction extends AbstractAddressAction{
 			displayAddress(addressList);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw e;
 		}
 	}
 	
-	private String getNumFromConsole() throws IOException{
-		return StringUtil.prompt("Please enter a phoneNum for search");
+	private String getNumFromConsole() throws IOException,IllegalArgumentException{
+		
+		String rtValue = StringUtil.prompt("Please enter a phoneNum for search");
+		if(!StringUtil.regmatch("\\d+", rtValue.trim()) && !("all".equals(rtValue))){
+			StringUtil.output("Input is not a valid phoneNum format");
+			throw new IllegalArgumentException();
+		}
+		return rtValue;
 	}
 	
-	private List searchAddress(String number){
+	private List searchAddress(String number) throws IOException{
 		if("all".equals(number)){
 			return getAddressBook();
 		}
@@ -53,5 +59,6 @@ public class SearchAddressAction extends AbstractAddressAction{
 			StringUtil.output(item.toString());
 		}
 	}
+	
 
 }

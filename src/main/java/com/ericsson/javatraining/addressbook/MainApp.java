@@ -13,6 +13,11 @@ public class MainApp {
 	}
 
 	public static void main(String[] args) {
-		Server.getInstance().start();
+		try {
+			Process.getInstance().process();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
