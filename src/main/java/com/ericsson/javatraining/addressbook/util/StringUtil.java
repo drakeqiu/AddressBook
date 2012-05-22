@@ -28,11 +28,19 @@ public final class StringUtil {
 	}
 
 	public static void output(String info, PrintStream out) {
+		out.print(info);
+	}
+	
+	public static void outputLine(String info, PrintStream out) {
 		out.println(info);
 	}
 
 	public static void output(String info) {
 		output(info, System.out);
+	}
+	
+	public static void outputLine(String info) {
+		outputLine(info, System.out);
 	}
 	
 	public static String input(String info, BufferedReader reader) throws IOException{

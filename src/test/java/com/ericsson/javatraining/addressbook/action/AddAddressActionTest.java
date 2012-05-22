@@ -17,6 +17,7 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 import com.ericsson.javatraining.addressbook.AddressItem;
+import com.ericsson.javatraining.addressbook.ServerDef;
 import com.ericsson.javatraining.addressbook.util.StringUtil;
 
 @RunWith(PowerMockRunner.class)
@@ -66,13 +67,13 @@ public class AddAddressActionTest {
 	public void testAbstractAddressAction() throws Exception {
 		PowerMockito.mockStatic(StringUtil.class);
 		PowerMockito.doReturn("James").when(StringUtil.class, "prompt",
-				"Please Enter name for address book");
+				ServerDef.PROMPT_ADD_NAME);
 		PowerMockito.doReturn("Shanghai").when(StringUtil.class, "prompt",
-				"Please enter address for address book");
+				ServerDef.PROMPT_ADD_ADDRESS);
 		PowerMockito.doReturn("119").when(StringUtil.class, "prompt",
-				"Please Enter phoneNum for book");
-		PowerMockito.doNothing().when(StringUtil.class, "output",
-				"Successfully");
+				ServerDef.PROMPT_ADD_MOBILE);
+		PowerMockito.doNothing().when(StringUtil.class, "outputLine",
+				ServerDef.OUTPUT_ADD_SUCCEED);
 
 		action.action();
 		AddressItem item = (AddressItem) action.getAddressBook().get(0);
@@ -85,7 +86,7 @@ public class AddAddressActionTest {
 	public void testAbstractAddressActionWithIOException() throws Exception {
 		PowerMockito.mockStatic(StringUtil.class);
 		PowerMockito.doThrow(new IOException()).when(StringUtil.class,
-				"prompt", "Please Enter name for address book");
+				"prompt", ServerDef.PROMPT_ADD_NAME);
 		action.action();
 
 	}

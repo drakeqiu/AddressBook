@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import com.ericsson.javatraining.addressbook.AddressItem;
+import com.ericsson.javatraining.addressbook.ServerDef;
 import com.ericsson.javatraining.addressbook.util.StringUtil;
 
 public class AddAddressAction extends AbstractAddressAction{
@@ -14,7 +15,7 @@ public class AddAddressAction extends AbstractAddressAction{
 		try {
 			AddressItem item = getItemFromConsole();
 			addAddress(item);
-			StringUtil.output("Successfully");
+			StringUtil.outputLine(ServerDef.OUTPUT_ADD_SUCCEED);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 //			e.printStackTrace();
@@ -24,9 +25,9 @@ public class AddAddressAction extends AbstractAddressAction{
 	}
 	
 	private AddressItem getItemFromConsole() throws IOException{
-		String name = StringUtil.prompt("Please Enter name for address book");
-		String address = StringUtil.prompt("Please enter address for address book");
-		String phoneNum = StringUtil.prompt("Please Enter phoneNum for book");	
+		String name = StringUtil.prompt(ServerDef.PROMPT_ADD_NAME);
+		String phoneNum = StringUtil.prompt(ServerDef.PROMPT_ADD_MOBILE);
+		String address = StringUtil.prompt(ServerDef.PROMPT_ADD_ADDRESS);
 		
 		return new AddressItem(name, address, phoneNum);
 	}

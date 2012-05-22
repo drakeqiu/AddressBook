@@ -67,9 +67,6 @@ public class Process {
 	}
 
 	public void process() throws Exception {
-		System.out.println("********************************");
-		System.out.println("Welcome to address book");
-		System.out.println("********************************");
 		processMenu();
 	}
 
@@ -107,12 +104,12 @@ public class Process {
 	 * just print all menu
 	 */
 	private void printMenu() {
-		StringUtil.output("================================");
+		StringUtil.outputLine("================================");
 		for (Object obj : menuList) {
 			MenuItem menu = (MenuItem) obj;
-			StringUtil.output(menu.toString());
+			StringUtil.outputLine(menu.toString());
 		}
-		StringUtil.output("================================");
+		StringUtil.outputLine("================================");
 	}
 
 	private Process() {

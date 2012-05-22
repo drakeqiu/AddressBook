@@ -21,7 +21,7 @@ public class MenuManager {
 	// load menu settings from config file
 	private static List loadConfig() {
 		List list = new ArrayList();
-		List elementList = DomUtil.load(ServerDef.CONFIGPATH).getRootElement().elements();
+		List elementList = DomUtil.load(ServerDef.MENU_CONFIG_PATH).getRootElement().elements();
 		for (Object obj : elementList) {
 			Element element = (Element) obj;
 			MenuItem menu = new MenuItem();

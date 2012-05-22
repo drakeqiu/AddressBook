@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <menu-list>
 	<menu id="add_menu">
-		<name>add_menu</name>
+		<name>add</name>
 		<index>1</index>
 		<content>Add an address Item</content>
-		<handle-option>1</handle-option>
+		<handle-option>add</handle-option>
 		<menu-quit>false</menu-quit>
 		<handle-class>com.ericsson.javatraining.addressbook.action.AddAddressAction
 		</handle-class>
 	</menu>
 
 	<menu id="search_menu">
-		<name>search_menu</name>
+		<name>search</name>
 		<index>2</index>
 		<content>Search an address Item</content>
-		<handle-option>2</handle-option>
+		<handle-option>search</handle-option>
 		<menu-quit>false</menu-quit>
 		<handle-class>com.ericsson.javatraining.addressbook.action.SearchAddressAction
 		</handle-class>
 	</menu>
 
 	<menu id="save_menu">
-		<name>save_menu</name>
+		<name>save</name>
 		<index>3</index>
 		<content>Save all</content>
-		<handle-option>3</handle-option>
+		<handle-option>save</handle-option>
 		<menu-quit>false</menu-quit>
 		<handle-class>com.ericsson.javatraining.addressbook.action.SaveAddressBookAction
 		</handle-class>
@@ -34,7 +34,7 @@
 		<name>quit_menu</name>
 		<index>4</index>
 		<content>Quit</content>
-		<handle-option>q</handle-option>
+		<handle-option>!quit</handle-option>
 		<menu-quit>true</menu-quit>
 		<handle-class>com.ericsson.javatraining.addressbook.action.QuitAction
 		</handle-class>
