@@ -2,21 +2,21 @@ package com.ericsson.javatraining.addressbook;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import com.ericsson.javatraining.addressbook.action.AbstractAddressAction;
 import com.ericsson.javatraining.addressbook.util.StringUtil;
 
 public class Process {
 	private static Process instance = new Process();
 
 	private List menuList;
-
+	private Map actionMap = new HashMap<String, MenuItem>();
 	private List addressBook;
 
 	private void init() {
@@ -26,6 +26,7 @@ public class Process {
 		for (Object obj : menuList) {
 			MenuItem menu = (MenuItem) obj;
 			menu.getAction().setAddressBook(addressBook);
+			actionMap.put(menu.getHandleOption(), menu);
 		}
 	}
 
@@ -67,6 +68,9 @@ public class Process {
 	}
 
 	public void process() throws Exception {
+//		ExecutorService executorService = Executors.newCachedThreadPool();
+//		executorService.execute(command);
+//		executorService.shutdownNow();
 		processMenu();
 	}
 
@@ -77,7 +81,7 @@ public class Process {
 	private void processMenu() throws Exception {
 		while (true) {
 			printMenu();
-			String option = StringUtil.prompt("Please select");
+			String option = StringUtil.prompt(ServerDef.MENU_PROMPT);
 			if (processOption(option)) {
 				return;
 			}
@@ -87,17 +91,19 @@ public class Process {
 	}
 
 	private boolean processOption(String option) throws Exception {
-		MenuItem menu = null;
-		boolean isMenuQuit = false;
-		for (Object obj : menuList) {
-			MenuItem menuItem = (MenuItem) obj;
-			if (option.equals(menuItem.getHandleOption())) {
-				menu = menuItem;
-				menu.getAction().action();
-				isMenuQuit = menu.isMenuQuit();
-			}
-		}
-		return isMenuQuit;
+//		MenuItem menu = null;
+//		boolean isMenuQuit = false;
+//		for (Object obj : menuList) {
+//			MenuItem menuItem = (MenuItem) obj;
+//			if (option.equals(menuItem.getHandleOption())) {
+//				menu = menuItem;
+//				menu.getAction().action();
+//				isMenuQuit = menu.isMenuQuit();
+//			}
+//		}
+		MenuItem menu = (MenuItem) actionMap.get(option);
+		menu.getAction().action();
+		return menu.isMenuQuit();
 	}
 
 	/**

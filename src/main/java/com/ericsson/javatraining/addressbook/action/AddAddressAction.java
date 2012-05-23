@@ -18,8 +18,6 @@ public class AddAddressAction extends AbstractAddressAction{
 			StringUtil.outputLine(ServerDef.OUTPUT_ADD_SUCCEED);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
-			System.out.println("IO exception");
 			throw e;
 		}
 	}

@@ -19,4 +19,10 @@ public final class FileUtil {
 			StringUtil.output(address.toString(), ps);
 		}
 	}
+	
+	public static void main(String[] args){
+		System.out.print((char)0x03);
+		System.out.print((char)0x3c);
+//		System.out.println((char)1);
+	}
 }

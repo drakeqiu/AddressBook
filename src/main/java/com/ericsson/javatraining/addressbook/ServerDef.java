@@ -16,4 +16,6 @@ public final class ServerDef {
 	public static final String PROMPT_ADD_ADDRESS ="address: ";
 	
 	public static final String OUTPUT_ADD_SUCCEED = "address entry added";
+	
+	public static final String MENU_PROMPT = "ab> ";
 }

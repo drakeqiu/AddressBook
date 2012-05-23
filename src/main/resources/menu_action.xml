@@ -3,7 +3,7 @@
 	<menu id="add_menu">
 		<name>add</name>
 		<index>1</index>
-		<content>Add an address Item</content>
+		<content>use add command to add new address entry</content>
 		<handle-option>add</handle-option>
 		<menu-quit>false</menu-quit>
 		<handle-class>com.ericsson.javatraining.addressbook.action.AddAddressAction
@@ -13,7 +13,7 @@
 	<menu id="search_menu">
 		<name>search</name>
 		<index>2</index>
-		<content>Search an address Item</content>
+		<content>use search command to get one or more address entries</content>
 		<handle-option>search</handle-option>
 		<menu-quit>false</menu-quit>
 		<handle-class>com.ericsson.javatraining.addressbook.action.SearchAddressAction
@@ -33,7 +33,7 @@
 	<menu id="quit_menu">
 		<name>quit_menu</name>
 		<index>4</index>
-		<content>Quit</content>
+		<content>quit from the application</content>
 		<handle-option>!quit</handle-option>
 		<menu-quit>true</menu-quit>
 		<handle-class>com.ericsson.javatraining.addressbook.action.QuitAction
