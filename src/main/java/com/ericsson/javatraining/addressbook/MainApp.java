@@ -1,12 +1,18 @@
 package com.ericsson.javatraining.addressbook;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
+
 
 /**
  * @author alfred
  *
  */
 public class MainApp {
-
+	
+    private static final Logger logger = LoggerFactory.getLogger(MainApp.class);
 	public MainApp() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -16,7 +22,7 @@ public class MainApp {
 		try {
 			Process.getInstance().process();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			logger.error("unknown error, programme halt.");
 			e.printStackTrace();
 		}
 	}

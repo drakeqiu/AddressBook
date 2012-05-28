@@ -8,20 +8,31 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-import com.ericsson.javatraining.addressbook.action.AbstractAddressAction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.ericsson.javatraining.addressbook.util.StringUtil;
 
 public class Process {
 	private static Process instance = new Process();
-
+	
+	private static final Logger logger = LoggerFactory.getLogger(Process.class);
+	private ProcessHandler handler;
+	private ExecutorService executorService;
+	
 	private List menuList;
 	private Map actionMap = new HashMap<String, MenuItem>();
 	private List addressBook;
 
 	private void init() {
 		addressBook = initiateAddressList();
-
+		
+		handler = new ProcessHandler();
+		handler.setActionMap(actionMap);
+		executorService = Executors.newSingleThreadScheduledExecutor();
 		menuList = MenuManager.getMenuList();
 		for (Object obj : menuList) {
 			MenuItem menu = (MenuItem) obj;
@@ -68,9 +79,9 @@ public class Process {
 	}
 
 	public void process() throws Exception {
-//		ExecutorService executorService = Executors.newCachedThreadPool();
-//		executorService.execute(command);
-//		executorService.shutdownNow();
+//		logger.info("Start to do process");
+		executorService.execute(handler);
+		executorService.shutdown();
 		processMenu();
 	}
 
@@ -102,8 +113,14 @@ public class Process {
 //			}
 //		}
 		MenuItem menu = (MenuItem) actionMap.get(option);
-		menu.getAction().action();
-		return menu.isMenuQuit();
+		if(menu!=null){
+			menu.getAction().action();
+			return menu.isMenuQuit();
+		}else{
+			return false;
+		}
+		
+		
 	}
 
 	/**

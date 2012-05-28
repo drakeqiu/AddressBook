@@ -5,21 +5,23 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.ericsson.javatraining.addressbook.AddressItem;
 import com.ericsson.javatraining.addressbook.util.StringUtil;
 
 public class SearchAddressAction extends AbstractAddressAction{
-
+	private static final Logger logger = LoggerFactory.getLogger(SearchAddressAction.class);
 	@Override
-	public void action() throws Exception{
+	public void action(){
 		// TODO Auto-generated method stub
 		try {
 			String phoneNum = getNumFromConsole();
 			List addressList = searchAddress(phoneNum);
 			displayAddress(addressList);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			throw e;
+			logger.error("IO exception");
 		}
 	}
 	
