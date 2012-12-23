@@ -2,6 +2,7 @@ package com.ericsson.javatraining.addressbook.action;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -54,7 +55,8 @@ public class SearchAddressActionTest {
 		PowerMockito.mockStatic(StringUtil.class);
 		PowerMockito.doReturn("110").when(StringUtil.class, "prompt",
 				"Please enter a phoneNum for search");
-		PowerMockito.doReturn(true).when(StringUtil.class,"regmatch","\\d+","110");
+		PowerMockito.doReturn(true).when(StringUtil.class, "regmatch", "\\d+",
+				"110");
 		action.action();
 	}
 
@@ -66,13 +68,14 @@ public class SearchAddressActionTest {
 
 		action.action();
 	}
-	
-	@Test(expected=IllegalArgumentException.class)
+
+	@Test(expected = IllegalArgumentException.class)
 	public void testActionWithInvalidArguments() throws Exception {
 		PowerMockito.mockStatic(StringUtil.class);
 		PowerMockito.doReturn("James").when(StringUtil.class, "prompt",
 				"Please enter a phoneNum for search");
-		PowerMockito.doReturn(false).when(StringUtil.class,"regmatch","\\d+","James");
+		PowerMockito.doReturn(false).when(StringUtil.class, "regmatch", "\\d+",
+				"James");
 
 		action.action();
 	}
@@ -90,15 +93,13 @@ public class SearchAddressActionTest {
 		method.setAccessible(false);
 		assertEquals("James", ((AddressItem) list.get(0)).getName());
 	}
-	
-	@Test(expected=IOException.class)
+
 	public void testActionWithThrowIOException() throws Exception {
 		PowerMockito.mockStatic(StringUtil.class);
 		PowerMockito.doReturn("110").when(StringUtil.class, "prompt",
 				"Please enter a phoneNum for search");
-		PowerMockito.doThrow(new IOException()).when(StringUtil.class, "prompt",
-				"Please enter a phoneNum for search");
-
+		PowerMockito.doThrow(new IOException()).when(BufferedReader.class,
+				"readLine");
 		action.action();
 	}
 

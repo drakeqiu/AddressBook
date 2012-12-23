@@ -2,6 +2,7 @@ package com.ericsson.javatraining.addressbook.action;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -82,11 +83,12 @@ public class AddAddressActionTest {
 		assertEquals(item.getPhoneNum(), "119");
 	}
 
-	@Test(expected=IOException.class)
 	public void testAbstractAddressActionWithIOException() throws Exception {
 		PowerMockito.mockStatic(StringUtil.class);
-		PowerMockito.doThrow(new IOException()).when(StringUtil.class,
+		PowerMockito.doNothing().when(StringUtil.class,
 				"prompt", ServerDef.PROMPT_ADD_NAME);
+		PowerMockito.doThrow(new IOException()).when(BufferedReader.class,
+				"readLine");
 		action.action();
 
 	}
